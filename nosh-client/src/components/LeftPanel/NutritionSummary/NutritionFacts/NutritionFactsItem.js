@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Header } from "semantic-ui-react";
 
-const NutritionFactsItem = ({ item }) => {
+const NutritionFactsItem = ({ item, quantity, unit }) => {
   return (
     <Table.Row>
       <Table.Cell>
@@ -9,7 +9,9 @@ const NutritionFactsItem = ({ item }) => {
           <Header.Content>{item}</Header.Content>
         </Header>
       </Table.Cell>
-      <Table.Cell>{0}g</Table.Cell>
+      <Table.Cell>
+        {Math.floor(quantity)} {unit}
+      </Table.Cell>
     </Table.Row>
   );
 };
