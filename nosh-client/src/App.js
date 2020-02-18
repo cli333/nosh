@@ -15,11 +15,18 @@ function App() {
         .doc(food);
       foodRef.get().then(res => console.log(res.data()));
     })();
-    // axios
-    //   .get("http://localhost:5000/1_cup_sugar")
-    //   .then(() => {
-    //   });
   }, [food]);
+
+  // noshes are stored as "1_large_banana": {...}
+
+  // on load, fetch noshes sorted by date, push to array
+  // if the current search item isn't in the array
+  // then go to backend
+  // else return the item from the array
+
+  // NOSH FORMATTING!:!::!!:
+  //  Enter an ingredient like "1 cup rice", etc.
+  // replace all \s with '_'
 
   return (
     <div>
