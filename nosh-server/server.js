@@ -17,10 +17,11 @@ app.use((req, res, next) => {
 });
 
 app.get("/:food", async (req, res) => {
-  let food = req.params.food.replace(/_/g, "%20");
+  let food = req.params.food;
   let url = `https://api.edamam.com/api/nutrition-data?app_id=${edaAppId}&app_key=${edaAppKey}&ingr=${food}`;
   try {
     let result = await axios.get(url);
+
     const {
       calories,
       dietLabels,
@@ -28,7 +29,8 @@ app.get("/:food", async (req, res) => {
       cautions,
       totalNutrients
     } = result.data;
-    firebase
+
+    await firebase
       .firestore()
       .collection("noshes")
       .doc(req.params.food)
@@ -39,11 +41,28 @@ app.get("/:food", async (req, res) => {
         cautions,
         totalNutrients
       });
-    res.send(result.data);
+
+    await firebase
+      .firestore()
+      .collection("noshes")
+      .doc(req.params.food)
+      .get()
+      .then(doc => {
+        console.log(doc.data());
+        res.send(doc.data());
+      });
   } catch (error) {
-    console.log(error);
-    res.send("error");
+    res.send({
+      error: {
+        message:
+          "We had a problem analysing this. Please check the ingredient spelling or if you have entered a quantities for the ingredients."
+      }
+    });
   }
+});
+
+app.get("*", (req, res) => {
+  res.send("nothing here");
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
