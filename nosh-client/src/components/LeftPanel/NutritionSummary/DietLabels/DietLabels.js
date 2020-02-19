@@ -10,6 +10,7 @@ const DietLabels = () => {
 
   const displayLables = () => {
     return dietLabels
+      .concat(["HIDDEN1", "HIDDEN2", "HIDDEN3"])
       .slice(0, 3)
       .map(item => <DietLabelsItem key={item} item={item} />);
   };
@@ -28,9 +29,9 @@ const DietLabels = () => {
                   displayLables()
                 ) : (
                   <React.Fragment>
-                    <DietLabelsItem item="HIGH PROTEIN" />
-                    <DietLabelsItem item="LOW FAT" />
-                    <DietLabelsItem item="LOW CARB" />
+                    <DietLabelsItem item="HIDDEN" />
+                    <DietLabelsItem item="HIDDEN" />
+                    <DietLabelsItem item="HIDDEN" />
                   </React.Fragment>
                 )}
               </List>

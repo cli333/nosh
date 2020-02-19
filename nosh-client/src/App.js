@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, GridColumn, GridRow, Segment, Card } from "semantic-ui-react";
+import { Grid, GridColumn, GridRow, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
 import NutritionSummary from "./components/LeftPanel/NutritionSummary/NutritionSummary";
@@ -9,12 +9,14 @@ function App() {
   return (
     <div
       style={{
-        width: "75%",
+        display: "block",
+        width: "1015px",
         margin: "auto",
+        marginTop: "10vh",
         padding: "10px"
       }}
     >
-      <Grid>
+      <Grid centered stackable stretched>
         <GridColumn width={3}>
           <GridRow>
             <NutritionSummary />

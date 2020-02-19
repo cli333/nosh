@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Header, Grid, List, Card } from "semantic-ui-react";
+import { Grid, List, Card } from "semantic-ui-react";
 import HealthLabelsItem from "./HealthLabelsItem";
 import { nutritionContext } from "../../../../context/NutritionProvider";
 
@@ -10,6 +10,7 @@ const HealthLabels = () => {
 
   const displayHealthLabels = () => {
     return healthLabels
+      .concat(["HIDDEN1", "HIDDEN2", "HIDDEN3", "HIDDEN4", "HIDDEN5"])
       .slice(0, 5)
       .map(item => <HealthLabelsItem key={item} item={item} />);
   };
@@ -28,11 +29,11 @@ const HealthLabels = () => {
                   displayHealthLabels()
                 ) : (
                   <React.Fragment>
-                    <HealthLabelsItem item="Vegan" />
-                    <HealthLabelsItem item="Vegetarian" />
-                    <HealthLabelsItem item="Low Sugar" />
-                    <HealthLabelsItem item="Dairy Free" />
-                    <HealthLabelsItem item="Gluten Free" />
+                    <HealthLabelsItem item="HIDDEN" />
+                    <HealthLabelsItem item="HIDDEN" />
+                    <HealthLabelsItem item="HIDDEN" />
+                    <HealthLabelsItem item="HIDDEN" />
+                    <HealthLabelsItem item="HIDDEN" />
                   </React.Fragment>
                 )}
               </List>

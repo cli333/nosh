@@ -3,8 +3,8 @@ const app = express();
 const port = 5000;
 
 const { firebase } = require("./firebase/firebase");
-
 const axios = require("axios");
+
 const { edaAppKey, edaAppId } = require("./apis/edamam");
 
 app.use((req, res, next) => {
@@ -62,7 +62,7 @@ app.get("/:food", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.send("nothing here");
+  res.send("Nothing here!");
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

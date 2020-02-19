@@ -10,7 +10,7 @@ import {
   GridColumn,
   GridRow,
   Segment,
-  Card
+  Container
 } from "semantic-ui-react";
 
 import { nutritionContext } from "../../context/NutritionProvider";
@@ -29,12 +29,13 @@ const Overview = () => {
   ).toFixed(2);
 
   return (
-    <div className="overview">
+    <Container>
       <CircularProgressbarWithChildren
         value={percentage}
         strokeWidth={5}
         styles={buildStyles({
           textSize: "10px",
+
           strokeLinecap: "butt",
           textColor: `${
             percentage > 60 ? "red" : percentage > 40 ? "yellow" : "green"
@@ -49,7 +50,7 @@ const Overview = () => {
             <GridColumn width={16}>
               <GridRow>
                 <Segment>
-                  <Header as="h1">{`${
+                  <Header as="h2">{`${
                     currentQuery ? currentQuery : "Enter a food item!"
                   }`}</Header>
                 </Segment>
@@ -63,7 +64,7 @@ const Overview = () => {
           </Grid>
         </React.Fragment>
       </CircularProgressbarWithChildren>
-    </div>
+    </Container>
   );
 };
 
